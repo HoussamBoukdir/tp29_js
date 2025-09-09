@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label >
+        <input type="text" placeholder="jour(1-31)" id="j">
+    </label>
+    <label >
+        <input type="text" placeholder="mois(1-12)" pattern="(1,12)"  id="m">
+    </label>
+    <label >
+        <input type="text" placeholder="annees(1970-2050)" id="a">
+    </label>
+    <input type="button" value="afficher" onclick="calculerJour()">
+    <div id="res"></div>
+    <script>
+        function calculerJour(){
+            let jours = Number(document.getElementById("j").value);
+            let mois = Number(document.getElementById("m").value) - 1; // Les mois commencent à 0 en JavaScript
+            let annees = Number(document.getElementById("a").value);
+            let jourSemaine = '';
+            switch(new Date(annees, mois, jours).getDay()){
+                case 0:
+                    jourSemaine = "dimanche";
+                    break;
+                case 1:
+                    jourSemaine = "lundi";
+                    break;
+                case 2:
+                    jourSemaine = "mardi";
+                    break;
+                case 3:
+                    jourSemaine = "mercredi";
+                    break;
+                case 4:
+                    jourSemaine = "jeudi";
+                    break;
+                case 5:
+                    jourSemaine = "vendredi";
+                    break;
+                case 6:
+                    jourSemaine = "samedi";
+                    break;
+                default:
+                    jourSemaine = "jour inconnu";
+            }
+            document.getElementById("res").innerText = jourSemaine;
+        }
+    </script>
+</body>
+</html>
